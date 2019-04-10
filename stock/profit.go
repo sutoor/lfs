@@ -8,17 +8,17 @@ import (
 //or if it contains invalid value(s) (i.e. a negative price)
 func YesterdayMaxProfit(prices []int) (int, error) {
 	if len(prices) < 1 {
-		return 0, errors.New("no prices in the list")
+		return -1, errors.New("no prices in the list")
 	}
 	if prices[0] < 0 {
-		return 0, errors.New("invalid price found. must be >= 0")
+		return -1, errors.New("invalid price found. must be >= 0")
 	}
 	minPrice := prices[0]
 	maxPrice := prices[0]
 	maxDiff := -1
 	for _, price := range prices[1:] {
 		if price < 0 {
-			return 0, errors.New("invalid price found. must be >= 0")
+			return -1, errors.New("invalid price found. must be >= 0")
 		}
 		if price < minPrice {
 			minPrice = price
