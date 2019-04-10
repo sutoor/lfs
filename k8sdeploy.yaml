@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lfs-profit
+  labels:
+    app: lfs-profit
+spec:
+  selector:
+    matchLabels:
+      app: lfs-profit
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lfs-profit
+    spec:
+      containers:
+        - name: lfs-profit-calc
+          image: sutoor/lfs.cp.test:1.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "1Gi"
+            requests:
+              memory: "500Mi"
+          command:
+            - lfs
+            - maxprofit
+            - -prices
+            - "90,100,2,25,3,4,27,26"
