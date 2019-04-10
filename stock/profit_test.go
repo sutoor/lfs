@@ -37,7 +37,7 @@ func TestInvalidPrice(t *testing.T) {
 }
 
 func TestMaxProfit(t *testing.T) {
-	prices := []int{10, 5, 7, 80, 1, 11, 9}
+	prices := []int{10, 5, 7, 80, 1, 11, 2, 9}
 	res, err := YesterdayMaxProfit(prices)
 	if err != nil {
 		t.Fail()
