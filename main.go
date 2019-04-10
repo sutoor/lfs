@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"lfscp/stock"
+	"lfs/stock"
 	"os"
 	"strconv"
 	"strings"
@@ -13,9 +13,9 @@ var maxprofitCln = "maxprofit"
 
 func main() {
 	flag.Usage = func() {
-		fmt.Println("Usage:\n  lfscp <subcommand> [options]")
+		fmt.Println("Usage:\n  lfs <subcommand> [options]")
 		fmt.Printf("\nAvailable subcommands: \n  o %s", maxprofitCln)
-		fmt.Println("\nSee 'lfscp <subcommand> -h' for usage")
+		fmt.Println("\n\nSee 'lfs <subcommand> -h' for usage")
 	}
 
 	maxprofitCmd := flag.NewFlagSet(maxprofitCln, flag.ExitOnError)
@@ -23,7 +23,7 @@ func main() {
 	flag.Parse()
 
 	if len(os.Args) < 2 {
-		fmt.Println("subcommand required. See 'lfscp -h' for help and usage")
+		fmt.Println("subcommand required. See 'lfs -h' for help and usage")
 		os.Exit(1)
 	}
 	switch os.Args[1] {

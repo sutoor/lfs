@@ -4,7 +4,7 @@ import (
 	"errors"
 )
 
-//YesterdayMaxProfit returns -1 if no profit found & an error if prices is empty
+//YesterdayMaxProfit returns 0 if no profit is to be made & an error if prices is empty
 //or if it contains invalid value(s) (i.e. a negative price)
 func YesterdayMaxProfit(prices []int) (int, error) {
 	if len(prices) < 1 {
@@ -23,12 +23,19 @@ func YesterdayMaxProfit(prices []int) (int, error) {
 		if price < minPrice {
 			minPrice = price
 		}
+		//keep track of current diff
+		diff := price - minPrice
 		//only calc & update maxDiff when we see a bigger max
 		//because we are only interested in the minimum (seen so far)
 		//to the left of max (i.e. must buy before sell condition)
-		if price > maxPrice {
+		if price >= maxPrice {
 			maxPrice = price
 			maxDiff = getMax(maxDiff, maxPrice-minPrice)
+		}
+		//if the current diff has increased because we saw a lower minimum
+		//update the maxDiff
+		if diff > maxDiff {
+			maxDiff = diff
 		}
 	}
 	return maxDiff, nil

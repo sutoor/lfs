@@ -7,7 +7,7 @@ import (
 func TestNoProfit(t *testing.T) {
 	prices := []int{13, 8, 4, 3, 1}
 	res, err := YesterdayMaxProfit(prices)
-	if res != -1 {
+	if res != 0 {
 		t.Fail()
 		t.Log("got:", res, ", want: -1 as there is no profit to be made")
 	}
@@ -37,7 +37,7 @@ func TestInvalidPrice(t *testing.T) {
 }
 
 func TestMaxProfit(t *testing.T) {
-	prices := []int{10, 5, 7, 80, 1, 11, 2, 9}
+	prices := []int{490, 500, 5, 80, 1, 11, 2, 9}
 	res, err := YesterdayMaxProfit(prices)
 	if err != nil {
 		t.Fail()
