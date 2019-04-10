@@ -19,7 +19,7 @@ func main() {
 	}
 
 	maxprofitCmd := flag.NewFlagSet(maxprofitCln, flag.ExitOnError)
-	stockPrices := maxprofitCmd.String("prices", "10,7,5,8,11,9", "comma separated list of stock prices")
+	stockPrices := maxprofitCmd.String("prices", "100,7,5,8,11,9", "comma separated list of stock prices")
 	flag.Parse()
 
 	if len(os.Args) < 2 {

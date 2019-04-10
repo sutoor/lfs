@@ -37,15 +37,19 @@ func TestInvalidPrice(t *testing.T) {
 }
 
 func TestMaxProfit(t *testing.T) {
-	prices := []int{490, 500, 5, 80, 1, 11, 2, 9}
+	prices := []int{90, 100, 2, 25, 3, 4, 27, 26}
 	res, err := YesterdayMaxProfit(prices)
 	if err != nil {
 		t.Fail()
 		t.Log("got err:", err, ", want: no error")
 	}
-	//want 75 (5 -> 80), not 79 (80 -> 1) or any other number
-	if res != 75 {
+	//want 25 (2->27) and NOT:
+	//98 (100->2): bigger diff but doesnt satisfy buy before sell
+	//10 (90->100): only satisfies maxPrice-minPrice == maxDiff (not necessarily true) because
+	//				although max - min will give max diff, but given the buy before sell condition,
+	//				at a later time, smaller stock prices could yield bigger diff (i.e. higher profit)
+	if res != 25 {
 		t.Fail()
-		t.Log("got:", res, ", want: 75")
+		t.Log("got:", res, ", want: 25")
 	}
 }
