@@ -9,7 +9,7 @@ func TestNoProfit(t *testing.T) {
 	res, err := YesterdayMaxProfit(prices)
 	if res != 0 {
 		t.Fail()
-		t.Log("got:", res, ", want: -1 as there is no profit to be made")
+		t.Log("got:", res, ", want: 0 as there is no profit to be made")
 	}
 	if err != nil {
 		t.Fail()
