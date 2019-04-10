@@ -37,7 +37,7 @@ func main() {
 	if maxprofitCmd.Parsed() {
 		priceList := strings.Split(*stockPrices, ",")
 		if res, err := getInts(priceList); err != nil {
-			fmt.Println("unable to parse prices from command line")
+			fmt.Println("err parsing prices from command line:", err)
 		} else {
 			if r, err := stock.YesterdayMaxProfit(res); err != nil {
 				fmt.Println("err calculating max profit:", err)
