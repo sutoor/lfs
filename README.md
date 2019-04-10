@@ -24,7 +24,16 @@ docker run --rm -w /go/src/lfs/stock lfs.cp.test:1.0 go test
 go get ./...
 go install
 go test
+#lfs command should now be available(provided $GOPATH/bin is in your $PATH env variable)
 lfs -h
 lfs maxprofit -h
 lfs maxprofit -prices "90,100,2,25,3,4,27,26"
+```
+
+4. There's also a kubernetes deployment file if it needs to be deployed on a kubernetes cluster. That can be done as follows:
+```
+kubectl apply -f k8sdeploy.yaml
+#to scale for more prod load
+kubectl get deploy
+kubectl scale deploy lfs-profit --replicas=5
 ```
