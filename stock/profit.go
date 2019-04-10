@@ -5,7 +5,7 @@ import (
 )
 
 //YesterdayMaxProfit returns -1 if no profit found & an error if prices is empty
-//or if it contains invalid prices (eg a negative price)
+//or if it contains invalid value(s) (i.e. a negative price)
 func YesterdayMaxProfit(prices []int) (int, error) {
 	if len(prices) < 1 {
 		return 0, errors.New("no prices in the list")

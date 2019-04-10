@@ -37,13 +37,13 @@ func TestInvalidPrice(t *testing.T) {
 }
 
 func TestMaxProfit(t *testing.T) {
-	prices := []int{10, 7, 5, 80, 1, 11, 9}
+	prices := []int{10, 5, 7, 80, 1, 11, 9}
 	res, err := YesterdayMaxProfit(prices)
 	if err != nil {
 		t.Fail()
 		t.Log("got err:", err, ", want: no error")
 	}
-	//want 75 (7 -> 80), not 79 (80 -> 1)
+	//want 75 (5 -> 80), not 79 (80 -> 1) or any other number
 	if res != 75 {
 		t.Fail()
 		t.Log("got:", res, ", want: 75")
