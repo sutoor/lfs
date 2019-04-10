@@ -23,17 +23,18 @@ func YesterdayMaxProfit(prices []int) (int, error) {
 		if price < minPrice {
 			minPrice = price
 		}
-		//keep track of current diff
+		//track current diff
 		diff := price - minPrice
 		//only calc & update maxDiff when we see a bigger max
-		//because we are only interested in the minimum (seen so far)
-		//to the left of max (i.e. must buy before sell condition)
+		//because we are only interested in the minimum to the left
+		//of max (i.e. must buy before sell condition)
 		if price >= maxPrice {
 			maxPrice = price
 			maxDiff = getMax(maxDiff, maxPrice-minPrice)
 		}
 		//if the current diff has increased because we saw a lower minimum
-		//update the maxDiff
+		//update the maxDiff. This can happen because the diff between
+		//the 2 numbers just encountered is > maxPrice-minPrice
 		if diff > maxDiff {
 			maxDiff = diff
 		}
